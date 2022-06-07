@@ -1,0 +1,117 @@
+<main>    
+  <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+          <img src=".\assets\logotipo.webp" alt="" width="30" height="24" class="d-inline-block align-text-top">
+           PetShop
+      </a>
+      </div>
+  </nav>
+  <div class="container ">
+      <h1 class="text-center">Cadastro de Clientes</h1>
+  </div>
+  <!-- formulario -->
+  <div class="container">
+      <form #cadastro="ngForm" (ngSubmit)="enviarDados(); cadastro.reset()" class="row g-3">
+          <div class="col-md-6">
+            <label for="nomeDoDono" class="form-label">Nome do Dono do Animal</label>
+            <input 
+            [(ngModel)]="cadastroDados.nomeDono" 
+            type="text" 
+            class="form-control"
+            name="nomeDono" 
+            id="nomeDoDono"
+            required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="cpf" class="form-label">CPF</label>
+            <input  
+            [(ngModel)]="cadastroDados.cpf" 
+            type="text" 
+            class="form-control" 
+            name="cpf" 
+            id="cpf" 
+            pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
+            minlength="14"
+            maxlength="14"
+            placeholder="Digite um CPF no formato: xxx.xxx.xxx-xx"
+            required
+            />
+          </div>
+          <div class="col-12">
+            <label for="email" class="form-label">E-mail</label>
+            <input 
+            [(ngModel)]="cadastroDados.email" 
+            type="email" 
+            class="form-control" 
+            name="email" 
+            id="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$"
+            required
+            />
+          </div>
+          <div class="col-12">
+            <label for="nomeAnimal" class="form-label">Nome do Animal</label>
+            <input 
+            [(ngModel)]="cadastroDados.nomeAnimal"
+            name="nomeAnimal" 
+            type="text" 
+            class="form-control" 
+            id="nomeAnimal" 
+            required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="codigoAnimal" class="form-label">Codigo de Identificação do Animal</label>
+            <input 
+            [(ngModel)]="cadastroDados.codigoIdentificacaoDoAnimal" 
+            name="codigoIdentificador"
+            type="number" 
+            class="form-control" 
+            id="codigoAnimal"
+            required
+            />
+          </div>           
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid">Enviar</button>
+          </div>
+        </form>
+  </div>   
+  <!-- model  -->
+  <div class="modal" >
+      <div class="modal-dialog">
+        <div  class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Cachorro Cadastrado</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table>
+                <thead>
+                    <th>Nome do Dono</th>
+                    <th>CPF</th>                      
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{{cadastroDados.nomeDono}}</th>
+                        <th>{{cadastroDados.cpf}}</th>
+                    </tr>
+                </tbody>
+                <thead>
+                    <th>Nome do Cachorro</th>
+                    <th>Cód. de Identificação</th>
+                </thead>
+                <tbody>
+                    <th>{{cadastroDados.nomeAnimal}}</th>
+                    <th>{{cadastroDados.codigoIdentificacaoDoAnimal}}</th>
+                </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="click = ! click; cadastro.reset">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>

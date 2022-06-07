@@ -1,0 +1,32 @@
+<main>
+    <div class="container d-flex p-5">
+        <form #form="ngForm" (submit)="valido(); form.reset()">
+            <div class="mb-3">
+                <label for="nomeUsuario" class="form-label">Nome Usuário</label>
+                <input type="text" class="form-control" name="usuario" id="nomeUsuario" [(ngModel)]="nomeDoUsuario" />
+                
+            </div>
+            <div class="mb-3">
+                <label for="numeroCpf" class="form-label">CPF</label>
+                <input type="number" class="form-control" name="cpf" id="numeroCpf" [(ngModel)]="cpf" required />
+                
+            </div>          
+            <div class="mb-3">
+                <label for="diaAniversario" class="form-label">Dia do Aniversário</label>
+                <input type="number" class="form-control"  name="dia" id="diaAniversario" [(ngModel)]="diaAniversario" 
+                    min="1" max="31"/>
+                
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="senha"id="password"[(ngModel)]="senha" required/>
+                
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+                <button type="submit" class="btn btn-primary" (click)="enviar()" [disabled]="!form.valid">Submit</button>
+        </form>
+    </div>
+</main>
